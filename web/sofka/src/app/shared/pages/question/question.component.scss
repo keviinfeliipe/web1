@@ -1,0 +1,11 @@
+
+
+.summary-answer{
+
+  display: grid;
+  grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+  align-items: flex-end;
+  height: 160px;
+
+}
+

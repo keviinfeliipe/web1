@@ -1,0 +1,66 @@
+<app-header></app-header>
+
+
+<div class="summary-questions container-lg">
+  <div>
+    <p class="text-start fs-1 mb-1 ">Todas las preguntas</p>
+    <p class="text-start fs-4">{{totalQuestions}} Preguntas</p>
+  </div>
+  <div class="text-end" *ngIf="authService.userData as user">
+    <app-create-question></app-create-question>
+  </div>
+  <div class="text-end fs-5" *ngIf="!authService.userData">
+    <p>Para agregar una pregunta debes estar logeado</p>
+  </div>
+</div>
+<div class="container">
+  <div class="question" *ngFor="let question of questions">
+    <div class="card mb-3 h-200">
+      <div class="row g-0">
+        <div class="col-md-2">
+          <div class="answer">
+            <br>
+            <div class="row">
+              <div class="text-center fs-1">
+                {{question.answers.length}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="text-center">
+                Respuestas
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <p class="card-text"><small class="text-muted">Por: {{question.userId}}</small></p>
+            <h5 class="card-title"> <a [routerLink]="['/question',question.id]">{{question.type}}</a> </h5>
+            <p class="card-text">{{question.question}}</p>
+            <p class="card-text"><small class="text-muted">Categoria: {{question.category}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" (click)="previousPage()" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item" *ngFor="let page of pages; let i = index"><a class="page-link"
+        (click)="getPage(i)">{{i+1}}</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="nextPage()" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<app-footer></app-footer>

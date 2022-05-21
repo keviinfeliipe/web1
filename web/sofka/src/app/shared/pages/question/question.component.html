@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<div class="container">
+  <div class="summary-questions container-lg">
+    <div class="answer">
+      <p class="text-start fs-1 mb-1"> {{question?.question}}</p>
+        <p class="text-start fs-6 mb-1"> {{question?.type}}</p>
+    </div>
+    <div class="text-end" *ngIf="authService.userData as user">
+      <app-create-answer [item]="question"></app-create-answer>
+    </div>
+    <div class="text-end fs-5" *ngIf="!authService.userData">
+      <p>Logueate para dar respuesta a esta pregunta</p>
+    </div>
+  </div>
+
+  <div class="text-end" *ngIf="">
+
+  </div>
+
+</div>
+
